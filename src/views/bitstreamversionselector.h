@@ -8,6 +8,14 @@ namespace Ui {
     class BitstreamVersionSelector;
 }
 
+enum codec {
+  HM40 = 40,
+  HM52 = 52,
+  HM100=100,
+  HM120=120,
+  AV1  =1000
+};
+
 class BitstreamVersionSelector : public QDialog
 {
     Q_OBJECT
@@ -19,14 +27,14 @@ public:
     ADD_CLASS_FIELD(int, iBitstreamVersion, getBitstreamVersion, setBitstreamVersion)
 
     private slots:
-    void on_version40_clicked();
-
     void on_buttonBox_accepted();
 
-    void on_version52_clicked();
+    void on_hm40_clicked();
+    void on_hm52_clicked();
+    void on_hm100_clicked();
+    void on_hm120_clicked();
 
-    void on_version100_clicked();
-    void on_version120_clicked();
+    void on_av1_clicked();
 
 protected:
     virtual void showEvent(QShowEvent * event);

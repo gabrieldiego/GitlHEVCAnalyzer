@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Select HM Version</string>
+   <string>Select codec</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>HM Version</string>
+      <string>Codec</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
@@ -25,7 +25,7 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <widget class="QRadioButton" name="version40">
+           <widget class="QRadioButton" name="hm40">
             <property name="text">
              <string>HM 4.0</string>
             </property>
@@ -35,7 +35,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="version52">
+           <widget class="QRadioButton" name="hm52">
             <property name="enabled">
              <bool>true</bool>
             </property>
@@ -45,7 +45,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="version100">
+           <widget class="QRadioButton" name="hm100">
             <property name="enabled">
              <bool>true</bool>
             </property>
@@ -55,9 +55,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="version120">
+           <widget class="QRadioButton" name="hm120">
             <property name="text">
              <string>HM 12.0 or later</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="av1">
+            <property name="text">
+             <string>AV1</string>
             </property>
            </widget>
           </item>

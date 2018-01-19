@@ -17,7 +17,7 @@ SequenceManager::~SequenceManager()
 ComSequence* SequenceManager::getCurrentSequence()
 {
     if(m_pcCurrentSequence == NULL)
-        qCritical() << "No Video Sequence Found..";
+        qCritical() << "No Video Sequence Found.";
     //throw NoSequenceFoundException();
     return m_pcCurrentSequence;
 }
@@ -37,7 +37,7 @@ bool SequenceManager::delSequence(ComSequence *pcSequence)
     for(int i = 0; i < m_apSequences.size(); i++)
     {
         if( m_apSequences[i] == pcSequence)
-        {         
+        {
             m_apSequences.remove(i);
             if(pcSequence == m_pcCurrentSequence)
                 m_pcCurrentSequence = NULL;

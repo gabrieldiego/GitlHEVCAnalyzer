@@ -2,12 +2,12 @@
 #include "ui_bitstreamversionselector.h"
 #include "model/common/comrom.h"
 #include <QDebug>
+
 BitstreamVersionSelector::BitstreamVersionSelector(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::BitstreamVersionSelector)
 {
     ui->setupUi(this);
-
 }
 
 BitstreamVersionSelector::~BitstreamVersionSelector()
@@ -15,51 +15,54 @@ BitstreamVersionSelector::~BitstreamVersionSelector()
     delete ui;
 }
 
-void BitstreamVersionSelector::on_version40_clicked()
+void BitstreamVersionSelector::on_hm40_clicked()
 {
-    m_iBitstreamVersion = 40;
+    m_iBitstreamVersion = HM40;
 }
 
-
-
-void BitstreamVersionSelector::on_version52_clicked()
+void BitstreamVersionSelector::on_hm52_clicked()
 {
-    m_iBitstreamVersion = 52;
+    m_iBitstreamVersion = HM52;
 }
 
-
-
-void BitstreamVersionSelector::on_version100_clicked()
+void BitstreamVersionSelector::on_hm100_clicked()
 {
-    m_iBitstreamVersion = 100;
+    m_iBitstreamVersion = HM100;
 }
 
-
-void BitstreamVersionSelector::on_version120_clicked()
+void BitstreamVersionSelector::on_hm120_clicked()
 {
-    m_iBitstreamVersion = 120;
+    m_iBitstreamVersion = HM120;
+}
+
+void BitstreamVersionSelector::on_av1_clicked()
+{
+    m_iBitstreamVersion = AV1;
 }
 
 void BitstreamVersionSelector::showEvent(QShowEvent * event)
 {
     /// restore last selection
-    int m_iBitstreamVersion = g_cAppSetting.value("last_bitstream_version", 100).toInt();
+    codec m_iBitstreamVersion = (codec) g_cAppSetting.value("last_bitstream_version", (int)HM120).toInt();
     switch(m_iBitstreamVersion)
     {
-    case 40:
-        ui->version40->setChecked(true);
+    case HM40:
+        ui->hm40->setChecked(true);
         break;
-    case 52:
-        ui->version52->setChecked(true);
+    case HM52:
+        ui->hm52->setChecked(true);
         break;
-    case 100:
-        ui->version100->setChecked(true);
+    case HM100:
+        ui->hm100->setChecked(true);
         break;
-    case 120:
-        ui->version120->setChecked(true);
+    case HM120:
+        ui->hm120->setChecked(true);
+        break;
+    case AV1:
+        ui->av1->setChecked(true);
         break;
     default:
-        ui->version100->setChecked(true);
+        ui->hm120->setChecked(true);
         break;
 
     }
@@ -81,20 +84,24 @@ void BitstreamVersionSelector::on_buttonBox_accepted()
 
 void BitstreamVersionSelector::xSetDecoderVersion()
 {
-    if(ui->version40->isChecked())
+    if(ui->hm40->isChecked())
     {
-        m_iBitstreamVersion = 40;
+        m_iBitstreamVersion = HM40;
     }
-    else if(ui->version52->isChecked() )
+    else if(ui->hm52->isChecked() )
     {
-        m_iBitstreamVersion = 52;
+        m_iBitstreamVersion = HM52;
     }
-    else if(ui->version100->isChecked() )
+    else if(ui->hm100->isChecked() )
     {
-        m_iBitstreamVersion = 100;
+        m_iBitstreamVersion = HM100;
     }
-    else if(ui->version120->isChecked() )
+    else if(ui->hm120->isChecked() )
     {
-        m_iBitstreamVersion = 120;
+        m_iBitstreamVersion = HM120;
+    }
+    else if(ui->av1->isChecked() )
+    {
+        m_iBitstreamVersion = AV1;
     }
 }
