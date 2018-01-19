@@ -5,7 +5,7 @@
 
 
 Preferences::Preferences() :
-    m_cSettings(QSettings::IniFormat, QSettings::UserScope, "GITL", "Gitl_HEVC_Analyzer_Preferences")
+    m_cSettings(QSettings::IniFormat, QSettings::UserScope, "GITL", "VideoAnalyzer_Preferences")
 {
     if(!m_cSettings.contains("cache_path")) {
         QDir cCacheFolder(".");

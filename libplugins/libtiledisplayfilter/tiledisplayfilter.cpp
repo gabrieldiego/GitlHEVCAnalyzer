@@ -6,7 +6,7 @@
 TileDisplayFilter::TileDisplayFilter(QObject *parent) :
     QObject(parent)
 {
-    setName("Tile Disply Filter");
+    setName("Tile Display Filter");
     m_cConfigDialog.addColorPicker("Color", &m_cConfig.getPenColor());
     m_cConfigDialog.addSlider("Line Width", 1.0, 10.0, &m_cConfig.getPenWidth());
 }
