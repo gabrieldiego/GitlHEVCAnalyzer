@@ -1,3 +1,11 @@
+Introduction
+============
+
+The VideoAnalyzer is a fork from Gitl HEVC Analyzer made by Huang Li that intends to add support to the new codec AV1.
+
+The project was renamed accordingly to avoid confusion of projects and to reflect the new feature, but the authorship of most of the code still belongs to the original project.
+
+
 What is Gitl HEVC Analyzer
 ==========================
 
@@ -83,7 +91,9 @@ Road Map
 - [x] Tile Display (Thank Yangyang Men)
 - [ ] GOP Structure Graph
 - [ ] 10 Bit YUV Support
-- [ ] Bitsteam Comparison 
+- [ ] Bitsteam Comparison
+
+- [ ] Support AV1 (on the Gabriel Teixeira fork)
 
 How To Build
 ============
@@ -93,25 +103,25 @@ You should get and install **Qt 5.1.0 or higher**.
 
 1.  Clone this repository.
 ```bash
-git clone https://github.com/lheric/GitlHEVCAnalyzer.git GitlHEVCAnalyzer
+git clone https://github.com/gabrieldiego/VideoAnalyzer.git
 ```
 
 2.  Init & update the submodules.
 ```bash
-cd GitlHEVCAnalyzer
+cd VideoAnalyzer
 git submodule update --init --recursive
 git submodule update --recursive
 ```
 
 3a. Build on linux:
 ```bash
-qmake -qt=qt5 GitlHEVCAnalyzer.pro -r "CONFIG+=Release"
+qmake -qt=qt5 VideoAnalyzer.pro -r "CONFIG+=Release"
 make
 ```
 
 3b. Build on windows:
 ```bash
-qmake GitlHEVCAnalyzer.pro -r "CONFIG+=Release"
+qmake VideoAnalyzer.pro -r "CONFIG+=Release"
 make
 ```
 
@@ -119,11 +129,11 @@ make
 ```bash
 # in case you don't have qt5 installed
 # brew install qt5
-qmake GitlHEVCAnalyzer.pro -r "CONFIG+=Release"
+qmake VideoAnalyzer.pro -r "CONFIG+=Release"
 make
 ```
 
-Instead of the building on the command line , Qt Creator is supported. Clone this project and its submodules, then open `GitlHEVCAnalyzer.pro` in Qt Creator.
+Instead of the building on the command line , Qt Creator is supported. Clone this project and its submodules, then open `VideoAnalyzer.pro` in Qt Creator.
 
 Contact Us
 ============
