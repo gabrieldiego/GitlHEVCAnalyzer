@@ -115,22 +115,22 @@ git submodule update --recursive
 
 3a. Build on linux:
 ```bash
+./build_makefiles.sh
 ./build.sh
-make
 ```
 
-3b. Build on Windows (under MinGW)
+3b. Build on Windows (under MinGW, not tested yet)
 ```bash
+./build_makefiles.sh
 ./build.sh
-make
 ```
 
 3c. Build on macosx:
 ```bash
 # in case you don't have qt5 installed
 # brew install qt5
+./build_makefiles.sh
 ./build.sh
-make
 ```
 
 Instead of the building on the command line , Qt Creator is supported. Clone this project and its submodules, then open `VideoAnalyzer.pro` in Qt Creator.
