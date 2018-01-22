@@ -115,13 +115,13 @@ git submodule update --recursive
 
 3a. Build on linux:
 ```bash
-qmake -qt=qt5 VideoAnalyzer.pro -r "CONFIG+=Release"
+./build.sh
 make
 ```
 
-3b. Build on windows:
+3b. Build on Windows (under MinGW)
 ```bash
-qmake VideoAnalyzer.pro -r "CONFIG+=Release"
+./build.sh
 make
 ```
 
@@ -129,7 +129,7 @@ make
 ```bash
 # in case you don't have qt5 installed
 # brew install qt5
-qmake VideoAnalyzer.pro -r "CONFIG+=Release"
+./build.sh
 make
 ```
 
