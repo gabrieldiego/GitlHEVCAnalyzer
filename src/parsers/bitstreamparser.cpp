@@ -1,4 +1,5 @@
 #include "bitstreamparser.h"
+#include "../views/bitstreamversionselector.h"
 #include "exceptions/decodernotfoundexception.h"
 #include "exceptions/bitstreamnotfoundexception.h"
 #include "gitlupdateuievt.h"
@@ -33,9 +34,24 @@ bool BitstreamParser::parseFile(QString strDecoderFolder,
     /// check if decoder exist
     QString strDecoderPath;
     QStringList cCandidateDecoderList;
-    cCandidateDecoderList << QString("HM_%1").arg(iEncoderVersion)
-                          << QString("HM_%1.exe").arg(iEncoderVersion)
-                          << QString("HM_%1.out").arg(iEncoderVersion);
+
+    switch( iEncoderVersion )
+    {
+        case HM40:
+        case HM52:
+        case HM100:
+        case HM120:
+            cCandidateDecoderList << QString("HM_%1").arg(iEncoderVersion)
+                              << QString("HM_%1.exe").arg(iEncoderVersion)
+                              << QString("HM_%1.out").arg(iEncoderVersion);
+            break;
+        case AV1:
+            cCandidateDecoderList << QString("av1");
+            break;
+        default:
+            break;
+    }
+
     QDir cDecoderFolder(strDecoderFolder);
     foreach(const QString& strDecoderExe, cCandidateDecoderList)
     {
@@ -69,9 +85,29 @@ bool BitstreamParser::parseFile(QString strDecoderFolder,
     QString strStandardOutputFile = strOutputPath+"/decoder_general.txt";
     m_cStdOutputFile.setFileName(strStandardOutputFile);
     m_cStdOutputFile.open(QIODevice::WriteOnly);
-    strDecoderPath = QDir::toNativeSeparators(strDecoderPath);              /// convert to native path
-    strBitstreamFilePath = QDir::toNativeSeparators(strBitstreamFilePath);  /// convert to native path
-    QString strDecoderCmd = QString("\"%1\" -b \"%2\" -o decoder_yuv.yuv").arg(strDecoderPath).arg(strBitstreamFilePath);
+
+    /// convert to native path
+    strDecoderPath = QDir::toNativeSeparators(strDecoderPath);
+    /// convert to native path
+    strBitstreamFilePath = QDir::toNativeSeparators(strBitstreamFilePath);
+
+    QString strDecoderCmd;
+
+    switch( iEncoderVersion )
+    {
+        case HM40:
+        case HM52:
+        case HM100:
+        case HM120:
+            strDecoderCmd = QString("\"%1\" -b \"%2\" -o decoder_yuv.yuv").arg(strDecoderPath).arg(strBitstreamFilePath);
+            break;
+        case AV1:
+            strDecoderCmd = QString("\"%1\" --i420 \"%2\" -o decoder_yuv.yuv").arg(strDecoderPath).arg(strBitstreamFilePath);
+            break;
+        default:
+            break;
+    }
+
     qDebug() << strDecoderCmd;
 
     m_cDecoderProcess.start(strDecoderCmd);
