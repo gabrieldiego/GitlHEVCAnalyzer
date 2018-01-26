@@ -57,11 +57,11 @@ bool OpenBitstreamCommand::execute( GitlCommandParameter& rcInputArg, GitlComman
     //TODO BUG Memory Leaking when exception happens
     if(pModel->getSequenceManager().getSequenceByFilename(strFilename) != NULL)
     {
-        qCritical() << "This bitstream is aleardy opened...";
+        qCritical() << "This bitstream is already open...";
         return false;
     }
     ComSequence* pcSequence = new ComSequence();
-    pcSequence->init();    
+    pcSequence->init();
     pcSequence->setFileName(strFilename);
 
     /// *****STEP 1 : Use the special decoder to parse bitstream*****
@@ -85,7 +85,7 @@ bool OpenBitstreamCommand::execute( GitlCommandParameter& rcInputArg, GitlComman
     else
     {
         bSuccess = true;
-        qDebug() << "decoding skiped";
+        qDebug() << "decoding skipped";
     }
 
 
